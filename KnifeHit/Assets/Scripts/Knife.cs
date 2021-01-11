@@ -14,7 +14,6 @@ public class Knife : MonoBehaviour
     {
         rubberMath = new PhysicsMaterial2D();
         rubberMath.bounciness = rubber;
-        Debug.Log(collider.tag);
         if(collider.gameObject.tag == "Wood" && knifeRB.gameObject.tag == "Knife")
         {
             knifeRB.velocity = Vector2.zero;
@@ -23,7 +22,6 @@ public class Knife : MonoBehaviour
             knifeRB.sharedMaterial = rubberMath;
             knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            knifeRB.gravityScale = 1;
         }
 
         if(collider.gameObject.tag == "KnifeInWood")
@@ -36,12 +34,4 @@ public class Knife : MonoBehaviour
             Destroy(collider.gameObject);
         }
     }
-    // private void OnTriggerEnter(Collider2D collider)
-    // {
-    //     Debug.Log(collider.tag);
-    //     if(collider.gameObject.tag == "KnifeInWood")
-    //     {
-    //         knifeRB.gameObject.tag = "ReflectKnife";
-    //     }
-    // }
 }

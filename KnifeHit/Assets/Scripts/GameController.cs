@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private GameObject BugKnife = null;
-    // Start is called before the first frame update
-    void Start()
-    {
+//     #region тестовые переменные
+//     public int woodHP;
+//     private int knifesQuant;
+
+//     public GameObject knifesQuantPrefab; 
+
+//     #endregion
+//     // Start is called before the first frame update
+//     void Start()
+//     {
+//         knifesQuant = woodHP;
+//         RenderKnifesQuant();
+//     }
+
+//     // Update is called once per frame
+//     void Update()
+//     {
         
-    }
+//     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Fix зависшего ножа
-        BugKnife = GameObject.FindGameObjectWithTag("ReflectKnife");
-        if (BugKnife != null)
-        {
-            BugKnife.GetComponent<Rigidbody2D>().gravityScale = 1;
-        }
-    }
+//     #region тестовый контроллер
 
-    #region тестовый контроллер
+//         public void RenderKnifesQuant()
+//         {
 
-        
+//         }
 
-    #endregion
+//     #endregion
 }

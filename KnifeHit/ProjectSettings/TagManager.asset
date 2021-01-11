@@ -10,6 +10,8 @@ TagManager:
   - KnifeInWood
   - ReflectKnife
   - KnifesCollider
+  - KnifesQuantRenderer
+  - KnifeTile
   layers:
   - Default
   - TransparentFX
