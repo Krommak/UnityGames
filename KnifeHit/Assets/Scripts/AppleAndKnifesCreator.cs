@@ -8,100 +8,82 @@ public class AppleAndKnifesCreator : MonoBehaviour
 
     public GameObject applePrefab;
 
-    public GameObject knifesPrefab;
+    public GameObject knifeGenPrefab;
 
     public int appleCreationChance = 25;
 
-    private int knifesKreationChance = 100;
-    private bool isApple = false;
-
-    private int knifes = 0;
-
-    private int apples = 0;
+    public int ApplesQuant;
 
     void Start()
     {
         ObjCreation();
     }
 #region рабочий но только с яблоками генератор
-    private void ObjCreation()
-    {
-        for(int i = 0; i <= dotsOfCreation.Length - 1; i++)
-        {
-            Vector2 pos = dotsOfCreation[i].transform.position;
-            Quaternion rot = dotsOfCreation[i].transform.rotation;
-            int f = Random.Range(0, 100);
-
-            if(f <= appleCreationChance && apples < 5)
-                {
-                    GameObject res = Instantiate(applePrefab, pos, rot);
-                    res.transform.parent = dotsOfCreation[i].transform;
-                    apples++;
-                } 
-        } 
-    }
-#endregion
-
-#region тестовый генератор с яблоками и ножами
     // private void ObjCreation()
     // {
     //     for(int i = 0; i <= dotsOfCreation.Length - 1; i++)
     //     {
-    //         bool isGenerate = Random.Range(0, 2) == 1 ? true : false;
-    //         Debug.Log(isGenerate);
-
-    //         if (isGenerate)
-    //         {
-    //             Vector2 pos = dotsOfCreation[i].transform.position;
-    //             Quaternion rot = dotsOfCreation[i].transform.rotation;
-
-    //             isApple = Random.Range(0, 2) == 1 ? true : false;
-
-    //             Debug.Log(isApple);
-    //             if (isApple)
-    //             {
-    //                 if (apples < 5) 
-    //                 {
-    //                     AppleCreation(dotsOfCreation[i], pos, rot);
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 if (knifes < 5)
-    //                 {
-    //                     KnifesCreation(dotsOfCreation[i], pos, rot);
-    //                 }
-    //             }
-    //         }
-    //     }
+    //         Vector2 pos = dotsOfCreation[i].transform.position;
+    //         Quaternion rot = dotsOfCreation[i].transform.rotation;
             
-    // }
+    //         int f = Random.Range(0, 100);
 
-    // void AppleCreation(Transform dots, Vector2 pos, Quaternion rot)
-    // {
-    //     int f = Random.Range(0, 100);
-
-    //     if(f <= appleCreationChance)
-    //     {
-    //         GameObject res = Instantiate(applePrefab, pos, rot);
-    //         res.transform.parent = dots.transform;
-    //         apples++;
+    //         if(f <= appleCreationChance && apples < 5)
+    //             {
+    //                 GameObject res = Instantiate(applePrefab, pos, rot);
+    //                 res.transform.parent = dotsOfCreation[i].transform;
+    //                 apples++;
+    //             } 
     //     } 
     // }
+#endregion
 
-    // void KnifesCreation(Transform dots, Vector2 pos, Quaternion rot)
-    // {
-    //     int f = Random.Range(0, 100);
+#region тестовый генератор с яблоками и ножами
 
-    //     rot = dots.transform.Rotate();
+    private void ObjCreation()
+    {
+        KnifesGen();
+        AppleGen();
+    }
 
-    //     if(f <= knifesKreationChance)
-    //     {
-    //         GameObject res = Instantiate(knifesPrefab, pos, rot);
-    //         res.transform.parent = dots.transform;
-    //         knifesKreationChance =-25;
-    //         knifes++;
-    //     }
-    // }
-    #endregion
+    private void KnifesGen()
+    {
+        int quant = Random.Range(1, 4);
+        for (int i = 0; i < quant; i++)
+        {
+            int randomDot = Random.Range(0, dotsOfCreation.Length);
+
+            if(dotsOfCreation[randomDot].gameObject.tag != "BlockedGenDot")
+            {
+                Vector2 pos = dotsOfCreation[randomDot].transform.position;
+                Quaternion rot = dotsOfCreation[randomDot].transform.rotation;
+                GameObject res = Instantiate(knifeGenPrefab, pos, rot);
+                res.transform.parent = dotsOfCreation[randomDot].transform;
+                dotsOfCreation[randomDot].gameObject.tag = "BlockedGenDot";
+            }
+        }
+    }
+
+    private void AppleGen()
+    {
+        int quant = ApplesQuant;
+        for(int i = 0; i < 5; i++)
+        {
+            if (dotsOfCreation[i].gameObject.tag != "BlockedGenDot")
+            {
+                int chance = Random.Range(0, 100);
+
+                if(chance <= appleCreationChance)
+                {
+                    Vector2 pos = dotsOfCreation[i].transform.position;
+                    Quaternion rot = dotsOfCreation[i].transform.rotation;
+                    GameObject res = Instantiate(applePrefab, pos, rot);
+                    res.transform.parent = dotsOfCreation[i].transform;
+                    dotsOfCreation[i].gameObject.tag = "BlockedGenDot";
+                }
+            }
+        }
+    }
+
+#endregion
 }

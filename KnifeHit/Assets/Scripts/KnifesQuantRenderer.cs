@@ -29,7 +29,7 @@ public class KnifesQuantRenderer : MonoBehaviour
         GameObject lastElem = knifesQuantTiles[knifesQuantTiles.Count - index];
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            lastElem.GetComponent<SpriteRenderer>().enabled = false;
+            lastElem.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 0.400f);
             index++;
             if(index > knifesQuantTiles.Count)
             {

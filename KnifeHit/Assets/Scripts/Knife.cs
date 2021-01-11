@@ -22,6 +22,8 @@ public class Knife : MonoBehaviour
             knifeRB.sharedMaterial = rubberMath;
             knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            GameObject.Find("Canvas").GetComponent<UI>().rateIndex++;
+            GameObject.Find("Canvas").GetComponent<UI>().knifesRateUp();
         }
 
         if(collider.gameObject.tag == "KnifeInWood")

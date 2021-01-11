@@ -12,6 +12,7 @@ TagManager:
   - KnifesCollider
   - KnifesQuantRenderer
   - KnifeTile
+  - BlockedGenDot
   layers:
   - Default
   - TransparentFX
