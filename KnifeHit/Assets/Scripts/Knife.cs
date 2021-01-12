@@ -33,6 +33,7 @@ public class Knife : MonoBehaviour
 
         if(collider.gameObject.tag == "Apple")
         {
+            GameObject.Find("Canvas").GetComponent<UI>().applesUp();
             Destroy(collider.gameObject);
         }
     }
