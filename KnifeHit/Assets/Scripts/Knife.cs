@@ -33,7 +33,9 @@ public class Knife : MonoBehaviour
             canvas.knifesRateUp();
             if (canvas.rateIndex == GameObject.Find("Wood").GetComponent<Wood>().woodHP)
             {
-                // GameObject.Find("GameController").GetComponent<GameController>().StageUp();
+                GameObject.Find("Wood").GetComponent<Wood>().woodHP++;
+                PlayerPrefs.SetInt("WoodHP", GameObject.Find("Wood").GetComponent<Wood>().woodHP);
+                GameObject.Find("SceneLoader").GetComponent<SceneLoader>().SceneUpLoader();
             }
         }
 
@@ -52,7 +54,6 @@ public class Knife : MonoBehaviour
             StartCoroutine(EndTime());
         }
     }
-
     
     IEnumerator EndTime()
     {

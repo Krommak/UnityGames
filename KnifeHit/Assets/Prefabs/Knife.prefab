@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9085711684760300957}
   - component: {fileID: 5160198819763291517}
   - component: {fileID: -1839702226740372549}
-  - component: {fileID: 5317767207718784195}
   - component: {fileID: 8262722045095161571}
+  - component: {fileID: 2047654696463762931}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Knife
@@ -106,32 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &5317767207718784195
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714503975596664038}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: f4f8de7c3beac82418708613eb800651, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.28888637}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27333334, y: 1.1666666}
-    newSize: {x: 0.27333334, y: 1.1666666}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.27333337, y: 0.5888939}
-  m_EdgeRadius: 0
 --- !u!114 &8262722045095161571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +121,29 @@ MonoBehaviour:
   knifeRB: {fileID: -1839702226740372549}
   rubber: 0.3
   rubberMath: {fileID: 6200000, guid: 1168be090fef47445abcbf29e82922f5, type: 2}
+--- !u!61 &2047654696463762931
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714503975596664038}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: f4f8de7c3beac82418708613eb800651, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.29286563}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.27333334, y: 1.1666666}
+    newSize: {x: 0.27333334, y: 1.1666666}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.27333334, y: 0.58093536}
+  m_EdgeRadius: 0

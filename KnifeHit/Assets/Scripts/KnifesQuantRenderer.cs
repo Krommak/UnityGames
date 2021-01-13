@@ -14,6 +14,7 @@ public class KnifesQuantRenderer : MonoBehaviour
 
     public List<GameObject> knifesQuantTiles = new List<GameObject>();
 
+    public Component state;
     private int index = 1;
     // Start is called before the first frame update
     void Start()

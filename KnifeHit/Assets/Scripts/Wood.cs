@@ -6,7 +6,12 @@ public class Wood : MonoBehaviour
 {
     public float rotateSpeed = 1f;
 
-    public int woodHP = 7;
+    public int woodHP;
+
+    private void Start()
+    {
+        woodHP = PlayerPrefs.GetInt("WoodHP");
+    }
     void FixedUpdate()
     {
         switch (GameObject.Find("Canvas").GetComponent<UI>().stage.text)
