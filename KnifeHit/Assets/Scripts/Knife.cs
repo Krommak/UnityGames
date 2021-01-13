@@ -10,6 +10,13 @@ public class Knife : MonoBehaviour
 
     public PhysicsMaterial2D rubberMath;
 
+    private UI canvas;
+
+    void Start()
+    {
+        canvas = GameObject.Find("Canvas").GetComponent<UI>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         rubberMath = new PhysicsMaterial2D();
@@ -22,19 +29,36 @@ public class Knife : MonoBehaviour
             knifeRB.sharedMaterial = rubberMath;
             knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            GameObject.Find("Canvas").GetComponent<UI>().rateIndex++;
-            GameObject.Find("Canvas").GetComponent<UI>().knifesRateUp();
-        }
-
-        if(collider.gameObject.tag == "KnifeInWood")
-        {
-            knifeRB.gameObject.tag = "ReflectKnife";
+            canvas.rateIndex++;
+            canvas.knifesRateUp();
+            if (canvas.rateIndex == GameObject.Find("Wood").GetComponent<Wood>().woodHP)
+            {
+                // GameObject.Find("GameController").GetComponent<GameController>().StageUp();
+            }
         }
 
         if(collider.gameObject.tag == "Apple")
         {
-            GameObject.Find("Canvas").GetComponent<UI>().applesUp();
+            canvas.applesUp();
             Destroy(collider.gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "KnifeInWood")
+        {
+            knifeRB.gameObject.tag = "ReflectKnife";
+            StartCoroutine(EndTime());
+        }
+    }
+
+    
+    IEnumerator EndTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canvas.gameOver.SetActive(true);
+        GameObject.Find("Wood").GetComponent<Wood>().rotateSpeed = 0f;
+        canvas.GameOverUI();
     }
 }

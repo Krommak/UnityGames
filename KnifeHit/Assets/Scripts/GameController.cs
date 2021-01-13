@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-//     #region тестовые переменные
-//     public int woodHP;
-//     private int knifesQuant;
+    private Wood wood;
 
-//     public GameObject knifesQuantPrefab; 
+    private UI ui;
 
-//     #endregion
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         knifesQuant = woodHP;
-//         RenderKnifesQuant();
-//     }
+    private string [] tagsToDel = new string [3] {"KnifeInWood", "Apple", "KnifeTile"};
 
-//     // Update is called once per frame
-//     void Update()
-//     {
-        
-//     }
+    void Start()
+    {
+        wood = GameObject.Find("Wood").GetComponent<Wood>();
+        ui = GameObject.Find("Canvas").GetComponent<UI>();
+    }
 
-//     #region тестовый контроллер
-
-//         public void RenderKnifesQuant()
-//         {
-
-//         }
-
-//     #endregion
+#region test перехода между Stage
+    // public void StageUp()
+    // {
+    //     string stageText = ui.stage.text;
+    //     int stageRate = int.Parse(stageText);
+    //     stageRate++;
+    //     ui.stage.text = stageRate.ToString();
+    //     for(int i = 0; i < tagsToDel.Length; i++)
+    //     {
+    //         do
+    //         {
+    //             GameObject obj = GameObject.FindWithTag(tagsToDel[i]);
+    //             Destroy(obj);
+    //         }
+    //         while(GameObject.FindWithTag(tagsToDel[i]) == null);
+    //     }
+    //     wood.woodHP++;
+    // }
+#endregion
 }

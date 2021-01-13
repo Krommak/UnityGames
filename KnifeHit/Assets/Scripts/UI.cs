@@ -5,21 +5,16 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    public Text knifesRate;
-
     public int rateIndex = 0;
+
+    public GameObject gameOver;
     
-    public Text applesCount;
+    public Text applesCount, endScore, knifesRate, stage, endStage;
+
     void Start()
     {
         knifesRateUp();
         applesCount.text = PlayerPrefs.GetInt("Apples").ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void knifesRateUp()
@@ -33,5 +28,11 @@ public class UI : MonoBehaviour
         index+=2;
         PlayerPrefs.SetInt("Apples", index);
         applesCount.text = index.ToString();
+    }
+
+    public void GameOverUI()
+    {
+        endScore.text = knifesRate.text;
+        endStage.text = "Stage " + stage.text;
     }
 }

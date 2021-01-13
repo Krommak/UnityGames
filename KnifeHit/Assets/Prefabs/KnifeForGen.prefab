@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2777526643671615044}
   m_Layer: 0
   m_Name: KnifeForGen
-  m_TagString: Untagged
+  m_TagString: KnifeInWood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,9 +42,10 @@ GameObject:
   - component: {fileID: 6344278233917391571}
   - component: {fileID: 8369202186252024859}
   - component: {fileID: 3715707533460003776}
+  - component: {fileID: 5882700653920489684}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: KnifeInWood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,3 +141,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27333334, y: 1.1666666}
   m_EdgeRadius: 0
+--- !u!50 &5882700653920489684
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602790343498930011}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
