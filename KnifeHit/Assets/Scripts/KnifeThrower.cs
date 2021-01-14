@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class KnifeThrower : MonoBehaviour
 {
-    public float force = 1f;
-    public GameObject knifePrefab;
+    private float force = 1f;
+    private GameObject knifePrefab;
     private GameObject knife;
+
+    private GameManager GameManager;
 
     void Start ()
     {
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        force = GameManager.force;
+        knifePrefab = GameManager.knifePrefab;
         KnifeGenerate();
     }
 

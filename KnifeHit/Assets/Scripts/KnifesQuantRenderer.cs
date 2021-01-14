@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnifesQuantRenderer : MonoBehaviour
 {
-    public GameObject knifeTilePrefab;
+    private GameObject knifeTilePrefab;
 
     private int knifeQuant;
 
@@ -12,14 +12,17 @@ public class KnifesQuantRenderer : MonoBehaviour
 
     private GameObject newTile;
 
-    public List<GameObject> knifesQuantTiles = new List<GameObject>();
+    private List<GameObject> knifesQuantTiles = new List<GameObject>();
 
-    public Component state;
     private int index = 1;
+
+    private GameManager GameManager;
     // Start is called before the first frame update
     void Start()
     {
-        knifeQuant = GameObject.FindGameObjectWithTag("Wood").GetComponent<Wood>().woodHP;
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        knifeQuant = GameManager.woodHP;
+        knifeTilePrefab = GameManager.knifeTilePrefab;
         genPos = transform.position;
         KnifesQuantRender();
     }
@@ -38,8 +41,6 @@ public class KnifesQuantRenderer : MonoBehaviour
             }
         }
     }
-
-    
 
     public void KnifesQuantRender()
     {   

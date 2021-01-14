@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class AppleAndKnifesCreator : MonoBehaviour
 {
-    public Transform [] dotsOfCreation;
+    private GameManager GameManager;
+    private Transform [] dotsOfCreation;
 
-    public GameObject applePrefab;
+    private GameObject applePrefab;
 
-    public GameObject knifeGenPrefab;
+    private GameObject knifeGenPrefab;
 
-    public int appleCreationChance = 25;
-
-    public int ApplesQuant;
+    private int appleCreationChance;
 
     void Start()
     {
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        dotsOfCreation = GameManager.dotsOfCreation;
+        appleCreationChance = GameManager.appleCreationChance;
+        applePrefab = GameManager.applePrefab;
+        knifeGenPrefab = GameManager.knifeGenPrefab;
         ObjCreation();
     }
 
@@ -48,7 +52,6 @@ public class AppleAndKnifesCreator : MonoBehaviour
 
     private void AppleGen()
     {
-        int quant = ApplesQuant;
         for(int i = 0; i < 5; i++)
         {
             if (dotsOfCreation[i].gameObject.tag != "BlockedGenDot")

@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour
 {
-    public float rotateSpeed = 1f;
+    private float rotateSpeed;
 
-    public int woodHP;
+    private int woodHP;
 
     private void Start()
     {
-        woodHP = PlayerPrefs.GetInt("WoodHP");
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        woodHP = GameManager.woodHP;
     }
+
+    private void Update()
+    {
+        rotateSpeed = GameManager.rotateSpeed;
+    }
+
+    private GameManager GameManager;
+
     void FixedUpdate()
     {
-        switch (GameObject.Find("Canvas").GetComponent<UI>().stage.text)
+        switch (GameManager.stage.text)
         {
             case "1":
                 NormalRotator();

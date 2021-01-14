@@ -5,21 +5,38 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    public int rateIndex = 0;
+    private int rateIndex;
 
-    public GameObject gameOver;
+    private GameObject gameOver;
     
-    public Text applesCount, endScore, knifesRate, stage, endStage;
+    private Text applesCount, endScore, knifesRate, stage, endStage;
+
+    private GameManager GameManager;
 
     void Start()
     {
-        knifesRateUp();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameOver = GameManager.gameOver;
+        applesCount = GameManager.applesCount;
+        endScore = GameManager.endScore;
+        stage = GameManager.stage;
+        knifesRate = GameManager.knifesRate;
+        endStage = GameManager.endStage;
+        knifesRate.text = "0";
         applesCount.text = PlayerPrefs.GetInt("Apples").ToString();
+    }
+
+    void Update()
+    {
+        rateIndex = PlayerPrefs.GetInt("knifesRate");
     }
 
     public void knifesRateUp()
     {
-        knifesRate.text = rateIndex + "";
+        int index = PlayerPrefs.GetInt("knifesRate");
+        index++;
+        PlayerPrefs.SetInt("knifesRate", index);
+        knifesRate.text = index.ToString();
     }
 
     public void applesUp()
@@ -34,5 +51,6 @@ public class UI : MonoBehaviour
     {
         endScore.text = knifesRate.text;
         endStage.text = "Stage " + stage.text;
+        PlayerPrefs.SetInt("isLvlUp", 0);
     }
 }

@@ -6,14 +6,19 @@ public class Knife : MonoBehaviour
 {
     public Rigidbody2D knifeRB;
 
-    public float rubber = 1f;
+    private float rubber;
 
-    public PhysicsMaterial2D rubberMath;
+    private PhysicsMaterial2D rubberMath;
 
     private UI canvas;
 
+    private GameManager GameManager;
+
     void Start()
     {
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        rubberMath = GameManager.rubberMath;
+        rubber = GameManager.rubber;
         canvas = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
@@ -29,14 +34,8 @@ public class Knife : MonoBehaviour
             knifeRB.sharedMaterial = rubberMath;
             knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            canvas.rateIndex++;
+            --GameManager.woodHP;
             canvas.knifesRateUp();
-            if (canvas.rateIndex == GameObject.Find("Wood").GetComponent<Wood>().woodHP)
-            {
-                GameObject.Find("Wood").GetComponent<Wood>().woodHP++;
-                PlayerPrefs.SetInt("WoodHP", GameObject.Find("Wood").GetComponent<Wood>().woodHP);
-                GameObject.Find("SceneLoader").GetComponent<SceneLoader>().SceneUpLoader();
-            }
         }
 
         if(collider.gameObject.tag == "Apple")
@@ -57,9 +56,9 @@ public class Knife : MonoBehaviour
     
     IEnumerator EndTime()
     {
+        GameManager.rotateSpeed = 0f;
         yield return new WaitForSeconds(0.5f);
-        canvas.gameOver.SetActive(true);
-        GameObject.Find("Wood").GetComponent<Wood>().rotateSpeed = 0f;
+        GameManager.gameOver.SetActive(true);
         canvas.GameOverUI();
     }
 }
