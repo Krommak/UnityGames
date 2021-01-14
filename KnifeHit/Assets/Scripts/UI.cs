@@ -22,20 +22,21 @@ public class UI : MonoBehaviour
         stage = GameManager.stage;
         knifesRate = GameManager.knifesRate;
         endStage = GameManager.endStage;
-        knifesRate.text = "0";
+        knifesRate.text = PlayerPrefs.GetInt("Score").ToString();
         applesCount.text = PlayerPrefs.GetInt("Apples").ToString();
+        stage.text = PlayerPrefs.GetInt("Stage").ToString();
     }
 
     void Update()
     {
-        rateIndex = PlayerPrefs.GetInt("knifesRate");
+
     }
 
     public void knifesRateUp()
     {
-        int index = PlayerPrefs.GetInt("knifesRate");
-        index++;
-        PlayerPrefs.SetInt("knifesRate", index);
+        int index = PlayerPrefs.GetInt("Score");
+        ++index;
+        PlayerPrefs.SetInt("Score", index);
         knifesRate.text = index.ToString();
     }
 
@@ -51,6 +52,5 @@ public class UI : MonoBehaviour
     {
         endScore.text = knifesRate.text;
         endStage.text = "Stage " + stage.text;
-        PlayerPrefs.SetInt("isLvlUp", 0);
     }
 }

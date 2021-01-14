@@ -13,8 +13,8 @@ public class SceneLoader : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetInt("lvl", 1);
-        PlayerPrefs.SetInt("woodHP", 7);
-        PlayerPrefs.SetInt("knifesRate", 0);
+        PlayerPrefs.SetInt("Stage", 1);
+        PlayerPrefs.SetInt("WoodHP", 7);
+        PlayerPrefs.SetInt("Score", 0);
     }
 }

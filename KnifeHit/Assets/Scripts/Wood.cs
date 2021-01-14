@@ -6,12 +6,9 @@ public class Wood : MonoBehaviour
 {
     private float rotateSpeed;
 
-    private int woodHP;
-
     private void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        woodHP = GameManager.woodHP;
     }
 
     private void Update()
@@ -23,21 +20,22 @@ public class Wood : MonoBehaviour
 
     void FixedUpdate()
     {
-        switch (GameManager.stage.text)
+        int index = int.Parse(GameManager.stage.text);
+        switch ((index+5)%5)
         {
-            case "1":
+            case 1:
                 NormalRotator();
                 break;
-            case "2":
+            case 2:
                 StartCoroutine(WoodRotatorMod1());
                 break;
-            case "3":
+            case 3:
                 StartCoroutine(WoodRotatorMod2());
                 break;
-            case "4":
+            case 4:
                 StartCoroutine(WoodRotatorMod3());
                 break;
-            case "5":
+            case 0:
                 StartCoroutine(WoodRotatorMod4());
                 break;
         }

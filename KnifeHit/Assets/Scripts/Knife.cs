@@ -34,8 +34,9 @@ public class Knife : MonoBehaviour
             knifeRB.sharedMaterial = rubberMath;
             knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
-            --GameManager.woodHP;
             canvas.knifesRateUp();
+            Debug.Log(PlayerPrefs.GetInt("Score"));
+            GameManager.throwing++;
         }
 
         if(collider.gameObject.tag == "Apple")

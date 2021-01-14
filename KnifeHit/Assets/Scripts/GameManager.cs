@@ -19,41 +19,40 @@ public class GameManager : MonoBehaviour
     public float force = 2f;
     public GameObject knifePrefab;
 
-    public int rateIndex = 0;
     public GameObject gameOver;
     public Text applesCount, endScore, knifesRate, stage, endStage;
-
-    public int lvl = 1;
 
     public float rotateSpeed = 1f;
     public int woodHP;
 
+    public int throwing;
+
     void Start()
     {   
-        if(PlayerPrefs.GetInt("isLvlUp") == 1)
+        if(PlayerPrefs.GetInt("Stage") == 0)
         {
-            stage.text = PlayerPrefs.GetInt("lvl").ToString();
-            woodHP = PlayerPrefs.GetInt("woodHP");
-            knifesRate.text = PlayerPrefs.GetInt("knifesRate").ToString();
+            PlayerPrefs.SetInt("Stage", 1);
+            PlayerPrefs.SetInt("WoodHP", 7);
         }
-        else 
-        {    
-            stage.text = lvl.ToString();
-            woodHP = 7;
-        }    
+        woodHP = PlayerPrefs.GetInt("WoodHP");
     }
     void Update()
     {
-        if (woodHP == 0)
-            {
-                PlayerPrefs.SetInt("isLvlUp", 1);
-                woodHP++;
-                lvl++;
-                PlayerPrefs.SetInt("lvl", lvl);
-                PlayerPrefs.SetInt("woodHP", woodHP);
-                PlayerPrefs.SetInt("knifesRate", rateIndex);
-                GameObject.Find("SceneLoader").GetComponent<SceneLoader>().SceneUpLoader();
-            }
+        if (throwing == woodHP)
+        {
+            StageUp();
+        }
+    }
+
+    void StageUp()
+    {
+        int index = PlayerPrefs.GetInt("Stage");
+        index++;
+        PlayerPrefs.SetInt("Stage", index);
+        int woodHP = PlayerPrefs.GetInt("WoodHP");
+        woodHP++;
+        PlayerPrefs.SetInt("WoodHP", woodHP);
+        GameObject.Find("SceneLoader").GetComponent<SceneLoader>().SceneUpLoader();
     }
             
 }

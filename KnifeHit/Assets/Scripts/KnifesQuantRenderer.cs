@@ -21,7 +21,7 @@ public class KnifesQuantRenderer : MonoBehaviour
     void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        knifeQuant = GameManager.woodHP;
+        knifeQuant = PlayerPrefs.GetInt("WoodHP");
         knifeTilePrefab = GameManager.knifeTilePrefab;
         genPos = transform.position;
         KnifesQuantRender();
