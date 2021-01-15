@@ -32,10 +32,9 @@ public class Knife : MonoBehaviour
             transform.parent = collider.transform;
             knifeRB.gameObject.tag = "KnifeInWood";
             knifeRB.sharedMaterial = rubberMath;
-            knifeRB.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = rubberMath;
+            knifeRB.gameObject.GetComponent<PolygonCollider2D>().sharedMaterial = rubberMath;
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
             canvas.knifesRateUp();
-            Debug.Log(PlayerPrefs.GetInt("Score"));
             GameManager.throwing++;
         }
 
@@ -52,6 +51,7 @@ public class Knife : MonoBehaviour
         {
             knifeRB.gameObject.tag = "ReflectKnife";
             StartCoroutine(EndTime());
+            GameManager.isGameOver = true;
         }
     }
     

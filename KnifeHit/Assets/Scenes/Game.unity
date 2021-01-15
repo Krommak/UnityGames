@@ -1830,16 +1830,16 @@ MonoBehaviour:
   knifeTilePrefab: {fileID: 1748420668973382745, guid: 7018b258bc95d704cbec9f8656c76718, type: 3}
   force: 50
   knifePrefab: {fileID: 714503975596664038, guid: c9d745061ababbf4d8e57eb27651b50b, type: 3}
-  rateIndex: 0
   gameOver: {fileID: 634724104}
   applesCount: {fileID: 1167502886}
   endScore: {fileID: 1958864287}
   knifesRate: {fileID: 355717746}
   stage: {fileID: 763673460}
   endStage: {fileID: 193716352}
-  lvl: 1
-  rotateSpeed: 2
+  rotateSpeed: 1
   woodHP: 7
+  throwing: 0
+  isGameOver: 0
 --- !u!4 &1885886259
 Transform:
   m_ObjectHideFlags: 0

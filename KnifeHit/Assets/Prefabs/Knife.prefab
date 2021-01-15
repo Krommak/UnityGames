@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5160198819763291517}
   - component: {fileID: -1839702226740372549}
   - component: {fileID: 8262722045095161571}
-  - component: {fileID: 2047654696463762931}
+  - component: {fileID: 907301528413349585}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Knife
@@ -119,10 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knifeRB: {fileID: -1839702226740372549}
-  rubber: 0.3
-  rubberMath: {fileID: 6200000, guid: 1168be090fef47445abcbf29e82922f5, type: 2}
---- !u!61 &2047654696463762931
-BoxCollider2D:
+--- !u!60 &907301528413349585
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.29286563}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -144,6 +142,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.27333334, y: 0.58093536}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0011317655, y: -0.64389694}
+      - {x: 0.08859896, y: -0.58647335}
+      - {x: 0.06570972, y: -0.51960665}
+      - {x: 0.07696864, y: -0.282249}
+      - {x: 0.14533488, y: -0.24389005}
+      - {x: 0.13617903, y: -0.19163324}
+      - {x: 0.05434871, y: -0.1752395}
+      - {x: -0.0014447179, y: 0.08434567}
+      - {x: -0.070756845, y: -0.17888188}
+      - {x: -0.13283084, y: -0.18307665}
+      - {x: -0.14995955, y: -0.25208652}
+      - {x: -0.07273268, y: -0.29004622}
+      - {x: -0.06613551, y: -0.5204356}
+      - {x: -0.089872986, y: -0.5908979}

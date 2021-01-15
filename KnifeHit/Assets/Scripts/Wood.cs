@@ -6,86 +6,51 @@ public class Wood : MonoBehaviour
 {
     private float rotateSpeed;
 
+
+    private float speedIndex = 0;
+    private GameManager GameManager;
     private void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
+        rotateSpeed = GameManager.rotateSpeed;
     }
 
     private void Update()
     {
-        rotateSpeed = GameManager.rotateSpeed;
-    }
 
-    private GameManager GameManager;
+        if(speedIndex < rotateSpeed)
+        { 
+            speedIndex += 0.5f * Time.deltaTime;
+        } 
+        transform.Rotate(0, 0, speedIndex);
+        
+    }
 
     void FixedUpdate()
     {
-        int index = int.Parse(GameManager.stage.text);
-        switch ((index+5)%5)
-        {
-            case 1:
-                NormalRotator();
-                break;
-            case 2:
-                StartCoroutine(WoodRotatorMod1());
-                break;
-            case 3:
-                StartCoroutine(WoodRotatorMod2());
-                break;
-            case 4:
-                StartCoroutine(WoodRotatorMod3());
-                break;
-            case 0:
-                StartCoroutine(WoodRotatorMod4());
-                break;
-        }
+        
+        // switch ((index+5)%5)
+        // {
+        //     case 1:
+        //         NormalRotator();
+        //         break;
+        //     case 2:
+        //         StartCoroutine(WoodRotatorMod1());
+        //         break;
+        //     case 3:
+        //         StartCoroutine(WoodRotatorMod2());
+        //         break;
+        //     case 4:
+        //         StartCoroutine(WoodRotatorMod3());
+        //         break;
+        //     case 0:
+        //         StartCoroutine(WoodRotatorMod4());
+        //         break;
+        // }
     }
 
     #region вращения
-    private void NormalRotator()
-    {
-        transform.Rotate(0, 0, rotateSpeed);
-    }
 
-    IEnumerator WoodRotatorMod1()
-    {
-        transform.Rotate(0, 0, rotateSpeed);
-        yield return new WaitForSecondsRealtime(5);
-        transform.Rotate(0, 0, 0);
-        yield return new WaitForSecondsRealtime(1);
-        transform.Rotate(0, 0, rotateSpeed);
-    }
-    
-    IEnumerator WoodRotatorMod2()
-    {   
-        transform.Rotate(0, 0, rotateSpeed * -1);
-        yield return new WaitForSecondsRealtime(3);
-        transform.Rotate(0, 0, rotateSpeed * 0.5f);
-        yield return new WaitForSecondsRealtime(2);
-        transform.Rotate(0, 0, rotateSpeed * -1);
-        yield return new WaitForSecondsRealtime(3);
-    }
-
-    IEnumerator WoodRotatorMod3()
-    {   
-        int sec = Random.Range(0, 4);
-        transform.Rotate(0, 0, rotateSpeed * -1);
-        yield return new WaitForSecondsRealtime(3);
-        transform.Rotate(0, 0, rotateSpeed * 0.5f);
-        yield return new WaitForSecondsRealtime(2);
-        transform.Rotate(0, 0, rotateSpeed * -1);
-        yield return new WaitForSecondsRealtime(3);
-    }
-    IEnumerator WoodRotatorMod4()
-    {   
-        int sec = Random.Range(0, 4);
-        float speed = Random.Range(0.0f, 3.0f);
-        transform.Rotate(0, 0, speed * -1);
-        yield return new WaitForSecondsRealtime(sec);
-        transform.Rotate(0, 0, speed * 0.5f);
-        yield return new WaitForSecondsRealtime(sec);
-        transform.Rotate(0, 0, speed * -1);
-        yield return new WaitForSecondsRealtime(sec);
-    }
     #endregion
 }

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6344278233917391571}
   - component: {fileID: 8369202186252024859}
   - component: {fileID: 5882700653920489684}
-  - component: {fileID: 1734913991924292838}
+  - component: {fileID: 8756387356475905130}
   m_Layer: 0
   m_Name: Knife
   m_TagString: KnifeInWood
@@ -136,8 +136,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1734913991924292838
-BoxCollider2D:
+--- !u!60 &8756387356475905130
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,6 +159,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.27333334, y: 1.1666666}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0011317655, y: -0.64389694}
+      - {x: 0.08859896, y: -0.58647335}
+      - {x: 0.06570972, y: -0.51960665}
+      - {x: 0.07696864, y: -0.282249}
+      - {x: 0.14533488, y: -0.24389005}
+      - {x: 0.13617903, y: -0.19163324}
+      - {x: 0.05434871, y: -0.1752395}
+      - {x: -0.0014447179, y: 0.08434567}
+      - {x: -0.070756845, y: -0.17888188}
+      - {x: -0.13283084, y: -0.18307665}
+      - {x: -0.14995955, y: -0.25208652}
+      - {x: -0.07273268, y: -0.29004622}
+      - {x: -0.06613551, y: -0.5204356}
+      - {x: -0.089872986, y: -0.5908979}

@@ -20,9 +20,9 @@ public class KnifeThrower : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && !GameManager.isGameOver)
         {
-             knife.GetComponent<BoxCollider2D>().enabled = true;
+             knife.GetComponent<PolygonCollider2D>().enabled = true;
              knife.transform.parent = null;
              knife.GetComponent<Rigidbody2D>().gravityScale = 1f;
              knife.GetComponent<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public int throwing;
 
+    public bool isGameOver = false;
+
     void Start()
     {   
         if(PlayerPrefs.GetInt("Stage") == 0)
