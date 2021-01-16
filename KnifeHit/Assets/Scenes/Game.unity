@@ -1836,7 +1836,7 @@ MonoBehaviour:
   knifesRate: {fileID: 355717746}
   stage: {fileID: 763673460}
   endStage: {fileID: 193716352}
-  rotateSpeed: 1
+  rotateSpeed: 2
   woodHP: 7
   throwing: 0
   isGameOver: 0
