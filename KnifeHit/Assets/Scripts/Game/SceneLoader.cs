@@ -17,4 +17,12 @@ public class SceneLoader : MonoBehaviour
         PlayerPrefs.SetInt("WoodHP", 7);
         PlayerPrefs.SetInt("Score", 0);
     }
+
+    public void StartGame(string name)
+    {
+        SceneManager.LoadScene(name);
+        PlayerPrefs.SetInt("Stage", 1);
+        PlayerPrefs.SetInt("WoodHP", 7);
+        PlayerPrefs.SetInt("Score", 0);
+    }
 }

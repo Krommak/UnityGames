@@ -52,5 +52,14 @@ public class UI : MonoBehaviour
     {
         endScore.text = knifesRate.text;
         endStage.text = "Stage " + stage.text;
+        if(int.Parse(endScore.text) > PlayerPrefs.GetInt("GreateScore"))
+        {
+            PlayerPrefs.SetInt("GreateScore", int.Parse(endScore.text));
+        }
+        if(int.Parse(stage.text) > PlayerPrefs.GetInt("GreateStage"))
+        {
+            PlayerPrefs.SetInt("GreateStage", int.Parse(stage.text));
+        }
+        
     }
 }

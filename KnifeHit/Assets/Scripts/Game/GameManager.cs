@@ -28,6 +28,21 @@ public class GameManager : MonoBehaviour
     public int throwing;
 
     public bool isGameOver = false;
+    
+    [Header ("Настройки движения для второго уровня")]
+    public float timeToRight2, timeToLeft2, timeToStop2;
+
+    
+    [Header ("Настройки движения для третьего уровня")]
+    public float timeToRight3, timeToLeft3, timeToStop3;
+
+    
+    [Header ("Настройки движения для четвёртого уровня")]
+    public float timeToRight4, timeToLeft4, timeToStop4;
+
+    
+    [Header ("Настройки движения для пятого уровня")]
+    public float timeToRight5, timeToLeft5, timeToStop5;
 
     void Start()
     {   

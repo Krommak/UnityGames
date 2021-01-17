@@ -1836,10 +1836,22 @@ MonoBehaviour:
   knifesRate: {fileID: 355717746}
   stage: {fileID: 763673460}
   endStage: {fileID: 193716352}
-  rotateSpeed: 2
+  rotateSpeed: 0.8
   woodHP: 7
   throwing: 0
   isGameOver: 0
+  timeToRight2: 2
+  timeToLeft2: 2.2
+  timeToStop2: 0
+  timeToRight3: 1.5
+  timeToLeft3: 0.3
+  timeToStop3: 0.5
+  timeToRight4: 2
+  timeToLeft4: 3
+  timeToStop4: 0.5
+  timeToRight5: 0.2
+  timeToLeft5: 0.6
+  timeToStop5: 0.15
 --- !u!4 &1885886259
 Transform:
   m_ObjectHideFlags: 0
