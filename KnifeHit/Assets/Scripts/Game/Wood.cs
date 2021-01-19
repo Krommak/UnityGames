@@ -15,8 +15,6 @@ public class Wood : MonoBehaviour
 
     private int stage;
 
-    private float angleZ;
-
     private void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -42,7 +40,7 @@ public class Wood : MonoBehaviour
                 timeToStop = GameManager.timeToStop4;
                 timeToRight = GameManager.timeToRight4;
                 break;
-            case 5:
+            case 0:
                 timeToLeft = GameManager.timeToLeft5;
                 timeToStop = GameManager.timeToStop5;
                 timeToRight = GameManager.timeToRight5;
@@ -227,8 +225,4 @@ public class Wood : MonoBehaviour
                 break;
         }
     }
-
-    #region вращения
-              
-    #endregion
 }

@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public int throwing;
 
     public bool isGameOver = false;
+
+    private bool isWoodDestroyed = false;
     
     [Header ("Настройки движения для второго уровня")]
     public float timeToRight2, timeToLeft2, timeToStop2;
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
     [Header ("Настройки движения для пятого уровня")]
     public float timeToRight5, timeToLeft5, timeToStop5;
 
+    public GameObject destroyWoodPrefab;
+
     void Start()
     {   
         if(PlayerPrefs.GetInt("Stage") == 0)
@@ -55,9 +59,13 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (throwing == woodHP)
+        if (throwing == woodHP && !isGameOver)
         {
-            StageUp();
+            if(!isWoodDestroyed)
+            {
+                WoodDestroy();
+                Invoke("StageUp", 1f);
+            }
         }
     }
 
@@ -70,6 +78,30 @@ public class GameManager : MonoBehaviour
         woodHP++;
         PlayerPrefs.SetInt("WoodHP", woodHP);
         GameObject.Find("SceneLoader").GetComponent<SceneLoader>().SceneUpLoader();
+    }
+
+    void WoodDestroy()
+    {
+        GameObject wood = GameObject.Find("Wood");
+        List<Transform> woodChild = new List<Transform>(); 
+
+        for (int i = 0; i < wood.transform.childCount; i++)
+        {
+            Transform childTransform = wood.transform.GetChild(i);
+            if(childTransform.gameObject.tag == "BlockedGenDot" || childTransform.gameObject.tag == "KnifeInWood")
+            {
+                woodChild.Add(childTransform);
+            }
+        }
+        for (int i = 1; i < woodChild.Count; i++)
+        {
+            woodChild[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            woodChild[i].transform.parent = null;
+            woodChild[i].GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 30f, ForceMode2D.Impulse);
+        }
+        Destroy(wood);
+        Instantiate(destroyWoodPrefab, new Vector3(-0.091f, 0.016f, 0f), Quaternion.identity);
+        isWoodDestroyed = true;
     }
             
 }

@@ -14,6 +14,10 @@ public class Knife : MonoBehaviour
 
     private GameManager GameManager;
 
+    private bool enabledWood = true;
+
+    public GameObject particleWood, particleKnife, particleApple;
+
     void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -22,12 +26,25 @@ public class Knife : MonoBehaviour
         canvas = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "KnifeInWood")
+        {
+            particleKnife.SetActive(true);
+            GameManager.isGameOver = true;
+            enabledWood = false;
+            knifeRB.gameObject.tag = "ReflectKnife";
+            StartCoroutine(EndTime());
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         rubberMath = new PhysicsMaterial2D();
         rubberMath.bounciness = rubber;
-        if(collider.gameObject.tag == "Wood" && knifeRB.gameObject.tag == "Knife")
+        if(knifeRB.gameObject.tag == "Knife" && collider.gameObject.tag == "Wood" && enabledWood)
         {
+            particleWood.SetActive(true);
             knifeRB.velocity = Vector2.zero;
             transform.parent = collider.transform;
             knifeRB.gameObject.tag = "KnifeInWood";
@@ -40,25 +57,24 @@ public class Knife : MonoBehaviour
 
         if(collider.gameObject.tag == "Apple")
         {
+            particleApple.SetActive(true);
+            StopCoroutine(AppleDestroy(collider));
             canvas.applesUp();
-            Destroy(collider.gameObject);
+            collider.gameObject.transform.parent = null;
+            collider.gameObject.GetComponent<Animator>().enabled = true;
+            collider.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
+    }
+    IEnumerator AppleDestroy(Collider2D collider)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(collider.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "KnifeInWood")
-        {
-            knifeRB.gameObject.tag = "ReflectKnife";
-            StartCoroutine(EndTime());
-            GameManager.isGameOver = true;
-        }
-    }
-    
     IEnumerator EndTime()
     {
         GameManager.rotateSpeed = 0f;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GameManager.gameOver.SetActive(true);
         canvas.GameOverUI();
     }

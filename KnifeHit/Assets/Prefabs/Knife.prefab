@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9085711684760300957}
   - component: {fileID: 5160198819763291517}
   - component: {fileID: -1839702226740372549}
-  - component: {fileID: 8262722045095161571}
   - component: {fileID: 907301528413349585}
+  - component: {fileID: -4497115645803926837}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Knife
@@ -106,19 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8262722045095161571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714503975596664038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 845ce93eb8ca7d24aa9cf428131bed88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knifeRB: {fileID: -1839702226740372549}
 --- !u!60 &907301528413349585
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -144,17 +131,38 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0011317655, y: -0.64389694}
-      - {x: 0.08859896, y: -0.58647335}
+    - - {x: 0.0011317655, y: -0.66075176}
+      - {x: 0.0675304, y: -0.58858025}
       - {x: 0.06570972, y: -0.51960665}
-      - {x: 0.07696864, y: -0.282249}
-      - {x: 0.11176713, y: -0.23858982}
-      - {x: 0.11497834, y: -0.19163324}
-      - {x: 0.05434871, y: -0.1752395}
-      - {x: -0.0014447179, y: 0.08434567}
-      - {x: -0.070756845, y: -0.17888188}
-      - {x: -0.11516357, y: -0.19544373}
-      - {x: -0.114625, y: -0.24855305}
-      - {x: -0.07273268, y: -0.29004622}
+      - {x: 0.049579464, y: -0.32438606}
+      - {x: 0.050368246, y: -0.3004985}
+      - {x: 0.044235542, y: -0.27545}
+      - {x: 0.04434764, y: -0.2596584}
+      - {x: 0.041238427, y: -0.22534291}
+      - {x: 0.066021666, y: -0.07040933}
+      - {x: 0.0006622849, y: 0.0057369135}
+      - {x: -0.057147972, y: -0.0793474}
+      - {x: -0.039787672, y: -0.19536626}
+      - {x: -0.037645247, y: -0.21617095}
+      - {x: -0.035103083, y: -0.22915344}
+      - {x: -0.03610644, y: -0.24181992}
+      - {x: -0.04088504, y: -0.27804905}
+      - {x: -0.043236744, y: -0.30479422}
       - {x: -0.06613551, y: -0.5204356}
-      - {x: -0.089872986, y: -0.5908979}
+      - {x: -0.06880443, y: -0.58247054}
+--- !u!114 &-4497115645803926837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714503975596664038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845ce93eb8ca7d24aa9cf428131bed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knifeRB: {fileID: -1839702226740372549}
+  particleWood: {fileID: 0}
+  particleKnife: {fileID: 0}
+  particleApple: {fileID: 0}

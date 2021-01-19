@@ -13,6 +13,7 @@ TagManager:
   - KnifesQuantRenderer
   - KnifeTile
   - BlockedGenDot
+  - WoodGO
   layers:
   - Default
   - TransparentFX
