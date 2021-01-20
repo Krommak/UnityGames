@@ -16,8 +16,6 @@ public class Knife : MonoBehaviour
 
     private bool enabledWood = true;
 
-    public GameObject particleWood, particleKnife, particleApple;
-
     void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -31,11 +29,11 @@ public class Knife : MonoBehaviour
     {
         if(collision.gameObject.tag == "KnifeInWood")
         {
-            particleKnife.SetActive(true);
             GameManager.isGameOver = true;
             enabledWood = false;
             knifeRB.gameObject.tag = "ReflectKnife";
             StartCoroutine(EndTime());
+            StartCoroutine(GameManager.HitInKnifes());
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
@@ -44,7 +42,6 @@ public class Knife : MonoBehaviour
         rubberMath.bounciness = rubber;
         if(knifeRB.gameObject.tag == "Knife" && collider.gameObject.tag == "Wood" && enabledWood)
         {
-            particleWood.SetActive(true);
             knifeRB.velocity = Vector2.zero;
             transform.parent = collider.transform;
             knifeRB.gameObject.tag = "KnifeInWood";
@@ -53,11 +50,11 @@ public class Knife : MonoBehaviour
             knifeRB.constraints = RigidbodyConstraints2D.FreezeAll;
             canvas.knifesRateUp();
             GameManager.throwing++;
+            StartCoroutine(GameManager.HitInWood());
         }
 
         if(collider.gameObject.tag == "Apple")
         {
-            particleApple.SetActive(true);
             StopCoroutine(AppleDestroy(collider));
             canvas.applesUp();
             collider.gameObject.transform.parent = null;
@@ -67,15 +64,19 @@ public class Knife : MonoBehaviour
     }
     IEnumerator AppleDestroy(Collider2D collider)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         Destroy(collider.gameObject);
     }
 
     IEnumerator EndTime()
     {
         GameManager.rotateSpeed = 0f;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         GameManager.gameOver.SetActive(true);
         canvas.GameOverUI();
     }
+
+    
+
+    
 }

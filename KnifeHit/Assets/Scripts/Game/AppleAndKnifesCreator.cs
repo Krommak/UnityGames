@@ -70,5 +70,10 @@ public class AppleAndKnifesCreator : MonoBehaviour
         }
     }
 
+    public void FreeKnifes(GameObject obj)
+    {
+        obj.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+    }
+
 #endregion
 }

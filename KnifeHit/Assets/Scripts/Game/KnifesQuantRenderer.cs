@@ -17,7 +17,6 @@ public class KnifesQuantRenderer : MonoBehaviour
     private int index = 1;
 
     private GameManager GameManager;
-    // Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -26,8 +25,7 @@ public class KnifesQuantRenderer : MonoBehaviour
         genPos = transform.position;
         KnifesQuantRender();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         GameObject lastElem = knifesQuantTiles[knifesQuantTiles.Count - index];

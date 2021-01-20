@@ -48,7 +48,7 @@ public class Wood : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(speedIndex<rotateSpeed)
         {

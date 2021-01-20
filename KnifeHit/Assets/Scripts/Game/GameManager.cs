@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject knifePrefab;
 
     public GameObject gameOver;
-    public Text applesCount, endScore, knifesRate, stage, endStage;
+    public Text applesCount, endScore, knifesRate, stage, endStage, restApples;
 
     public float rotateSpeed = 1f;
     public int woodHP;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public float timeToRight5, timeToLeft5, timeToStop5;
 
     public GameObject destroyWoodPrefab;
+    private bool isVibr = false;
 
     void Start()
     {   
@@ -63,9 +64,14 @@ public class GameManager : MonoBehaviour
         {
             if(!isWoodDestroyed)
             {
+                StartCoroutine(Victory());
                 WoodDestroy();
                 Invoke("StageUp", 1f);
             }
+        }
+        if(isVibr)
+        {
+            Handheld.Vibrate();
         }
     }
 
@@ -92,16 +98,45 @@ public class GameManager : MonoBehaviour
             {
                 woodChild.Add(childTransform);
             }
+            if(childTransform.Find("KnifeForGen(Clone)"))
+            {
+                GameObject knife = childTransform.Find("KnifeForGen(Clone)").gameObject;
+                wood.GetComponent<AppleAndKnifesCreator>().FreeKnifes(knife);
+            }
         }
         for (int i = 1; i < woodChild.Count; i++)
         {
             woodChild[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             woodChild[i].transform.parent = null;
-            woodChild[i].GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 30f, ForceMode2D.Impulse);
+            woodChild[i].GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 20f, ForceMode2D.Impulse);
         }
         Destroy(wood);
         Instantiate(destroyWoodPrefab, new Vector3(-0.091f, 0.016f, 0f), Quaternion.identity);
         isWoodDestroyed = true;
     }
-            
+
+    public IEnumerator Victory()
+    {
+        for(int i = 0; i <= 2; i++)
+        {
+            isVibr = true;
+            yield return new WaitForSecondsRealtime(0.2f);
+            isVibr = false;
+            yield return new WaitForSecondsRealtime(0.3f);
+        }
+    } 
+
+    public IEnumerator HitInWood()
+    {
+        isVibr = true;
+        yield return new WaitForSecondsRealtime(0.2f);
+        isVibr = false;
+    }
+
+    public IEnumerator HitInKnifes()
+    {
+        isVibr = true;
+        yield return new WaitForSecondsRealtime(0.8f);
+        isVibr = false;
+    }  
 }

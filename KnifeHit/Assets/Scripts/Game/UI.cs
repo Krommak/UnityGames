@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
 
     private GameObject gameOver;
     
-    private Text applesCount, endScore, knifesRate, stage, endStage;
+    private Text applesCount, endScore, knifesRate, stage, endStage, restApples;
 
     private GameManager GameManager;
 
@@ -22,9 +22,11 @@ public class UI : MonoBehaviour
         stage = GameManager.stage;
         knifesRate = GameManager.knifesRate;
         endStage = GameManager.endStage;
+        restApples = GameManager.restApples;
         knifesRate.text = PlayerPrefs.GetInt("Score").ToString();
         applesCount.text = PlayerPrefs.GetInt("Apples").ToString();
         stage.text = PlayerPrefs.GetInt("Stage").ToString();
+        restApples.text = PlayerPrefs.GetInt("Apples").ToString();
     }
 
     void Update()
