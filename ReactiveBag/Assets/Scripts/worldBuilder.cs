@@ -64,7 +64,4 @@ public class worldBuilder : MonoBehaviour
         GameObject res = Instantiate(free[index], pos, Quaternion.identity, sectionContainer);
         lastSection = res.transform;
     }
-
-    
-
 }
